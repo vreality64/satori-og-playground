@@ -2445,9 +2445,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"satori-og@workspace:.":
+"satori-og-playground@workspace:.":
   version: 0.0.0-use.local
-  resolution: "satori-og@workspace:."
+  resolution: "satori-og-playground@workspace:."
   dependencies:
     "@next/font": 13.1.6
     "@types/node": 18.13.0
