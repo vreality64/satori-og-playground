@@ -15,8 +15,8 @@ export default function handler(req: NextRequest) {
         <div
           style={{
             fontSize: 100,
-            color: 'black',
-            background: 'white',
+            color: 'white',
+            background: 'black',
             width: '100%',
             height: '100%',
             padding: '50px 200px',
@@ -25,6 +25,9 @@ export default function handler(req: NextRequest) {
             alignItems: 'center',
             display: 'flex',
             flexDirection: 'column',
+            backgroundImage:
+              'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
+            backgroundSize: '100px 100px',
           }}
         >
           <div>👋, 🌎</div>

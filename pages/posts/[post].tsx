@@ -2,19 +2,23 @@ import styles from '@/styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 
-export default function Home() {
+interface Props {
+  title: string
+}
+
+export default function Post({ title }: Props) {
   return (
     <>
       <Head>
-        <title>OG Generator Playground</title>
-        <meta name="description" content="OG Generator playground" />
+        <title>{title}</title>
+        <meta name="description" content={title} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content="https://satori-og.vercel.app/api/og?title=OG Generator Playground" />
+        <meta property="og:image" content={`https://satori-og.vercel.app/api/og?title=${title}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>Hello World</p>
+        <div className={styles.heading}>
+          <h1>{title.toUpperCase()}</h1>
         </div>
 
         <div className={styles.center}>
@@ -26,4 +30,14 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getServerSideProps(context: any) {
+  const title = context.params.post ?? 'OG Generator Playground'
+
+  return {
+    props: {
+      title: title.replaceAll('-', ' '),
+    },
+  }
 }
