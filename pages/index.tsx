@@ -6,6 +6,12 @@ const EDGE_ENDPOINT = process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_U
 const TITLE = 'OG Generator Playground'
 
 export default function Home() {
+  const og = {
+    title: TITLE,
+    description: '만나서 반가워요',
+    image: `${EDGE_ENDPOINT}/api/og?title=${encodeURIComponent(TITLE)}`,
+  }
+
   return (
     <>
       <Head>
@@ -13,15 +19,15 @@ export default function Home() {
         <meta name="description" content={TITLE} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={TITLE} />
-        <meta property="og:description" content="만나서 반가워요" />
-        <meta property="og:image" content={`${EDGE_ENDPOINT}/api/og?title=${TITLE}`} />
+        <meta property="og:title" content={og.title} />
+        <meta property="og:description" content={og.description} />
+        <meta property="og:image" content={og.image} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="satori-og-playground.vercel.app" />
-        <meta name="twitter:title" content={TITLE} />
-        <meta name="twitter:description" content="만나서 반가워요" />
-        <meta name="twitter:image" content={`${EDGE_ENDPOINT}/api/og?title=${TITLE}`} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={og.description} />
+        <meta name="twitter:image" content={og.image} />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>

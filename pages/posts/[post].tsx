@@ -9,6 +9,12 @@ interface Props {
 }
 
 export default function Post({ title }: Props) {
+  const og = {
+    title,
+    description: '만나서 반가워요',
+    image: `${EDGE_ENDPOINT}/api/og?title=${encodeURIComponent(title)}`,
+  }
+
   return (
     <>
       <Head>
@@ -16,15 +22,15 @@ export default function Post({ title }: Props) {
         <meta name="description" content={title} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content="만나서 반가워요" />
-        <meta property="og:image" content={`${EDGE_ENDPOINT}/api/og?title=${title}`} />
+        <meta property="og:title" content={og.title} />
+        <meta property="og:description" content={og.description} />
+        <meta property="og:image" content={og.image} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="satori-og-playground.vercel.app" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content="만나서 반가워요" />
-        <meta name="twitter:image" content={`${EDGE_ENDPOINT}/api/og?title=${title}`} />
+        <meta name="twitter:description" content={og.description} />
+        <meta name="twitter:image" content={og.image} />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
