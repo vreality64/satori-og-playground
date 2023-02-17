@@ -8,7 +8,7 @@ export const config = {
 export default function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)
-    const title = searchParams.get('title')?.slice(0, 20) ?? '만나서 반가워요!'
+    const title = searchParams.get('title')?.slice(0, 100) ?? '만나서 반가워요!'
 
     return new ImageResponse(
       (

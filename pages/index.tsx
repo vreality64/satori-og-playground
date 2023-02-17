@@ -2,16 +2,18 @@ import styles from '@/styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 
-const EDGE_ENDPOINT = [process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : '', '/api/og'].join('')
+const EDGE_ENDPOINT = process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''
+const TITLE = 'OG Generator Playground'
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>OG Generator Playground</title>
-        <meta name="description" content="OG Generator playground" />
+        <title>{TITLE}</title>
+        <meta name="description" content={TITLE} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="og:image" content={`${EDGE_ENDPOINT}?title=OG Generator Playground`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${EDGE_ENDPOINT}/api/og?title=${TITLE}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
