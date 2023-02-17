@@ -25,7 +25,7 @@ export default function Home() {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="satori-og-playground.vercel.app" />
-        <meta name="twitter:title" content={title} />
+        <meta name="twitter:title" content={og.title} />
         <meta name="twitter:description" content={og.description} />
         <meta name="twitter:image" content={og.image} />
 
