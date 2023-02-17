@@ -2,6 +2,8 @@ import styles from '@/styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 
+const EDGE_ENDPOINT = [process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : '', '/api/og'].join('')
+
 interface Props {
   title: string
 }
@@ -13,7 +15,7 @@ export default function Post({ title }: Props) {
         <title>{title}</title>
         <meta name="description" content={title} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content={`https://satori-og.vercel.app/api/og?title=${title}`} />
+        <meta name="og:image" content={`${EDGE_ENDPOINT}?title=${title}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>

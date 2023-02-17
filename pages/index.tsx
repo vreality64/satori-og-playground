@@ -2,6 +2,8 @@ import styles from '@/styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 
+const EDGE_ENDPOINT = [process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : '', '/api/og'].join('')
+
 export default function Home() {
   return (
     <>
@@ -9,7 +11,7 @@ export default function Home() {
         <title>OG Generator Playground</title>
         <meta name="description" content="OG Generator playground" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content="https://satori-og.vercel.app/api/og?title=OG Generator Playground" />
+        <meta name="og:image" content={`${EDGE_ENDPOINT}?title=OG Generator Playground`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
